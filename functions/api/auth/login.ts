@@ -1,5 +1,3 @@
-import { json } from '@cloudflare/workers-types';
-
 export const onRequest: PagesFunction = async (context) => {
   const { request, env } = context;
 
@@ -8,17 +6,17 @@ export const onRequest: PagesFunction = async (context) => {
   }
 
   try {
-    const { password } = await request.json();
-    const adminPassword = env.ADMIN_PASSWORD || 'admin123';
+    const body = await request.json() as { password?: string };
+    const adminPassword = (env.ADMIN_PASSWORD as string) || 'admin123';
 
-    if (password === adminPassword) {
-      const response = new Response(JSON.stringify({ success: true }), {
+    if (body.password === adminPassword) {
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
         headers: {
           'Content-Type': 'application/json',
           'Set-Cookie': 'auth=authenticated; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400',
         },
       });
-      return response;
     } else {
       return new Response(JSON.stringify({ error: 'Invalid password' }), {
         status: 401,
