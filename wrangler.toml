@@ -1,0 +1,10 @@
+name = "github-cms"
+compatibility_date = "2023-01-01"
+pages_build_output_dir = "out"
+
+[env.production]
+name = "github-cms"
+compatibility_flags = ["nodejs_compat"]
+
+[triggers.crons]
+crons = ["0 2 * * *"]
