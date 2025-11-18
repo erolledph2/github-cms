@@ -1,6 +1,6 @@
 name = "github-cms"
 compatibility_date = "2023-01-01"
-pages_build_output_dir = ".next/standalone"
+pages_build_output_dir = "out"
 
 [env.production]
 name = "github-cms"
