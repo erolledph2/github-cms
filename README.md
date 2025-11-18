@@ -15,6 +15,5 @@ Make sure build settings in Cloudflare Pages are:
 - Build output directory: `out`
 
 The project uses Cloudflare Pages Functions for authentication endpoints located under `functions/api/auth`:
-- `functions/api/auth/login.js` — POST to set an auth cookie
-- `functions/api/auth/check.js` — GET to verify the auth cookie
+
 
