@@ -20,6 +20,8 @@ export default function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
+        // ensure cookies set by the function are accepted by the browser
+        credentials: 'same-origin',
         body: JSON.stringify({ password }),
       });
 

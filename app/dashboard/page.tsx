@@ -10,7 +10,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('/api/auth/check');
+        const response = await fetch('/api/auth/check', { credentials: 'same-origin' });
         if (!response.ok) {
           router.push('/login');
         }
